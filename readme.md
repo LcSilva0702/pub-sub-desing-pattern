@@ -2,27 +2,24 @@
 
     Abra o terminal e navegue até a pasta do seu projeto Node.
     Execute o seguinte comando para reiniciar o servidor Node e apagar o arquivo IPC:
+    ```
+    rm -f ipc (Linux)
+    ```
+2. Usando o código JavaScript no node terminal:
+    ```   
+    const net = require('net');
 
-rm -f ipc (Linux)
+    const nomeAleatorio = net.connect('path');
 
-2. Usando o código JavaScript:
-JavaScript
+    // Inscrever-se em um canal
+    nomeAleatorio.write('sub_channel');
 
-const net = require('net');
+    // Receber mensagens
+    nomeAleatorio.on('data', (data) => console.log(`Mensagem: ${data.toString()}`));
 
-const nomeAleatorio = net.connect('path');
-
-// Inscrever-se em um canal
-nomeAleatorio.write('sub_channel');
-
-// Receber mensagens
-nomeAleatorio.on('data', (data) => console.log(`Mensagem: ${data.toString()}`));
-
-// Publicar em um canal
-nomeAleatorio.write('pub_channel_message');
-
-Use o código com cuidado.
-
+    // Publicar em um canal
+    nomeAleatorio.write('pub_channel_message');
+    ```
 Explicação do código:
 
     const net = require('net'): Importa o módulo net do Node, que fornece APIs para comunicação de rede.

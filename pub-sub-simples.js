@@ -53,6 +53,6 @@ server.on('connection', (socket) => {
             return;
         }
 
-        console.error(new Error(`Vagabundo escreve direito ${message}`))
+        console.error(new Error(`${message}`))
     })
 })
